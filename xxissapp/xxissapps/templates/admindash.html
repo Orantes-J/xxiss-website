@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- FONT AWESOME CDN  -->
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="logo-wrapper">
+        <img class="cmpny-logo" src="{% static 'images/xxisslogo-img.jpeg' %}" alt="company logo">
+    </div>
+    <div class="greet-admin-opt tf1">
+        <p class="tf1">Welcome Back {{admin}}</p>
+    </div>
+    <div class="chk-msg-container">
+        <p><a href="/check-messages">Check Messages <i class="fa-solid fa-message"></i></a></p>
+    </div>
+    <div class="log-out-container">
+        <p><a class="logout-hyper" href="/admin-logout">Logout</a></p>
+    </div>
+    <div class="db-search-bar tf1">
+        <form action="/search-request" method="GET">
+            <input type="text" class="search-in" name="search-in" placeholder="search...">
+            <button class="search-icon-btn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+        </form>
+    </div>
+    <br>
+    <div class="search-result hide-object"></div>
+    <h3 class="tf1 admin-dash-txt">Admin Dashboard</h3>
+    <div class="orders-dash-wrapper">
+        <div class="new-order-g-t">
+            <h2 class="mf1">New Orders</h2>
+            <div class="nw-order-list">
+                <ul class="tf1 orders">
+                    <li>1. Object 1 | #1452878</li>
+                    <li>2. Object 2 | #1456846</li>
+                    <li>3. Object 3 | #1452674</li>
+                </ul>
+            </div>
+        </div>
+        <div class="current-order-g-t">
+            <h2 class="mf1">On going Orders</h2>
+            <div class="cu-order-list">
+                <ul class="tf1 orders">
+                    <li>1. object 4 | #142548</li>
+                    <li>2. object 5 | #142587</li>
+                    <li>3. object 6 | #142583</li>
+                </ul>
+            </div>
+        </div>
+        <div class="completed-order-g-t">
+            <h2 class="mf1">Completed Orders</h2>
+            <div class="cp-order-list">
+                <ul class="tf1 orders">
+                    <li>1. object 7 | #141524</li>
+                    <li>2. object 8 | #141525</li>
+                    <li>3. object 9 | #141526</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src='main.js'></script>
+</body>
+</html>

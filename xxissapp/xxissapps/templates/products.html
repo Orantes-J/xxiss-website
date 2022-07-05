@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Specs{% endblock title %} 
+    {% block content %}
+    {% include 'navbar.html' %}
+    <!-- {% if user %}
+    <p class="lg-lo-dash tf1"><a class="customer-cart" href="/order-receipt"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-quant"> 0</span></li></a></p>
+    {% endif %} -->
+    {% include 'supportform.html' %}
+        <div class="t-m-1">
+            <div>
+                <h2 class="mf1">ROAM</h2>
+            </div>
+            <div class="grid-template-alpro-t1">
+                <div class="t-img">
+                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of ROAM trailer">
+                </div>
+                <div class="c-color-div">
+                    <div>
+                        <p class="tf1">Choose A Color </p>
+                    </div>
+                    <div class="bl-o-cl">
+                    <form action="/add-to-receipt" method="POST">
+                        {% csrf_token %}
+                        <ul>
+                            <li class="color-1 c-color not-selected" data-color="green"></li>
+                            <li class="color-2 c-color not-selected" data-color="blue"></li>
+                            <li class="color-3 c-color not-selected" data-color="red"></li>
+                        </ul>
+                    </div>
+                    <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="roam"></i></p> -->
+                    <div class="addons1 hide-object"></div>
+                    <div  class="kaa-aubnd">
+                        <p class="tf1"><button type="submit" class="tf1 p-o-btn">place order!</button></p>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="t-m-2">
+            <div>
+                <h2 class="mf1">COYOTE</h2>
+            </div>
+            <div class="grid-template-alpro-t2">
+                <div class="t-img">
+                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of Coyote trailer">
+                </div>
+                <div class="c-color-div">
+                    <div>
+                        <p class="tf1">Choose A Color </p>
+                    </div>
+                    <div class="bl-o-cl">
+                        <ul>
+                            <li class="color-1 c-color not-selected" data-color="green"></li>
+                            <li class="color-2 c-color not-selected" data-color="blue"></li>
+                            <li class="color-3 c-color not-selected" data-color="red"></li>
+                        </ul>
+                    </div>
+                    <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="coyote"></i></p> -->
+                    <div class="addons2 hide-object"></div>
+                    <div  class="kaa-aubnd">
+                        <p class="tf1"><button class="tf1 p-o-btn">place order!</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="t-m-3">
+            <div>
+                <h2 class="mf1">SPARTA</h2>
+            </div>
+            <div class="grid-template-alpro-t3">
+                <div class="t-img">
+                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of Sparta trailer">
+                </div>
+                <div class="c-color-div">
+                    <div>
+                        <p class="tf1">Choose A Color </p>
+                    </div>
+                    <div class="bl-o-cl">
+                        <ul>
+                            <li class="color-1 c-color not-selected" data-color="green"></li>
+                            <li class="color-2 c-color not-selected" data-color="blue"></li>
+                            <li class="color-3 c-color not-selected" data-color="red"></li>
+                        </ul>
+                    </div>
+                    <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="sparta"></i></p> -->
+                    <div class="addons3 hide-object"></div>
+                    <div class="kaa-aubnd">
+                        <p class="tf1"><button class="tf1 p-o-btn">place order!</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="{% static 'js/index.js' %}"></script>
+    {% include 'footer.html' %}
+{% endblock content %} 

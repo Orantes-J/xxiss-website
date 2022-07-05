@@ -1,0 +1,3 @@
+border color for firsat section maybe a darker blue
+
+select tag add event and get value and change txt content in label.

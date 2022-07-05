@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css\index.css'%}">
+</head>
+<body>
+    <a href="/"> <img class="cpny-logo" src="{% static 'images\xxisslogo-img.jpeg' %}" alt="company logo"></a>
+    {% for msg in messages %}
+    <div class="customer-msg-error">
+        <p class="tf1 err-msg">{{msg}}</p>
+    </div>
+    {% endfor %}
+    <div class="customer-login-wrapper">
+        <div class="login-container">
+            <h2 class="tf1">Customer Login</h2>
+            <div class="lock-icon-container">
+                <img class="lock-icon" src="{% static 'images/lock-icon-xxiss.png' %}" alt="lock image">
+            </div>
+            <div class="customer-form-container">
+                <form class="customer-form-lg tf1" action="/customer-dash-login" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="email" id="email" name="email" placeholder="Email"><br>
+                    <input type="password" class="customerpassword" id="password" name="customerpassword" placeholder="Password"><br>
+                    <div class="customer-login-btn">
+                        <button class="tf1" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="sign-up-container">
+            <h2 class="tf1">Sign Up</h2>
+            <div class="lock-icon-container">
+                <img class="lock-icon" src="{% static 'images/lock-icon-xxiss.png' %}" alt="lock image">
+            </div>
+            <div class="customer-signup-form-container">
+                <form class="customer-signup-form-lg tf1" action="/customer-dash-new" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="signupusername" id="signupusername" name="signupusername" required placeholder="Username">
+                    <input type="email" class="signemail" id="signemail" name="signemail" required placeholder="Email">
+                    <input type="password" class="signuppassword" id="signuppassword" name="signuppassword" required placeholder="Password">
+                    <div class="signup-login-btn">
+                        <button class="tf1" type="submit">Sign-Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    {% include 'footer.html' %}
+</body>
+</html>

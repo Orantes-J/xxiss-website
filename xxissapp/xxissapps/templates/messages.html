@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Messages</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="newmsg-g-t">
+        <h2 class="mf1">Customer Messages</h2>
+        <a href="/admin-dash">Admin Dashboard</a>
+        <div class="cust-msgs">
+            <ul class="tf1 orders">
+                {% for i in messages %}
+                    <div>
+                        {% for a in i %}
+                        {% if forloop.counter == 2 %}
+                            <li>From : {{a}}</li>
+                        {% endif %}
+                        {% if forloop.counter == 3 %}
+                            <li>Phone : {{a}}</li>
+                        {% endif %}
+                        {% if forloop.counter == 4 %}
+                            <li>Email : {{a}}</li>
+                        {% endif %}
+                        {% if forloop.counter == 5 %}
+                            <li>Customer Message : {{a}}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Specs{% endblock title %} 
+{% block content %}
+    {% include 'navbar.html' %}
+        <h3 class="specs-item-d mf1">Item Name</h3>
+        <div class="tf1">
+            <table>
+                <tr class="t-h">
+                    <td>People</td>
+                    <td>Available</td>
+                    <td>Price</td>
+                    <td>HxWxL</td>
+                </tr>
+                <tr class="t-b">
+                    <td>3</td>
+                    <td>✔️</td>
+                    <td>$350</td>
+                    <td>30x15x15</td>
+                </tr>
+            </table>
+        </div>
+        <div class="g-t-specs">
+            <div class="g-t-m-s">
+                <img src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="image of rv">
+            </div>
+            <div class="g-t-t-s">
+                <p class="tf1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit facere porro minima cum iste quis nihil quibusdam magnam distinctio quas unde quia laboriosam labore ab placeat repudiandae eaque dolores perferendis omnis nemo praesentium fuga, cumque, voluptatem soluta. Omnis, fuga rem?</p>
+            </div>
+        </div>
+        <hr class="hr-just">
+        <h3 class="mf1">Floor Plan - <i>Standard Feature List</i></h3>
+        <div class="flr-p">
+            <div class="floor-plan-container">
+                <img class="floor-plan-svg" src="{% static 'images\xxiss-floorplan-svg-1.jpg' %}" alt="image of floor plan">
+            </div>
+            <div>
+                <ul class="tf1">
+                    <li>Front storage 2-24” driver side/passenger Storage access doors</li>
+                    <li>Room for Large cooler or 12v refrigerator/ multiple batteries.</li>
+                    <li>12V Main power shut off switch</li>
+                    <li>1-Group 31 deep-cycle marine battery (Included).</li>
+                    <li>12V NOCO Genius 10A Smart charger onboard 12V 12-way blade fuse block Shore power plugs 1-110V AC plug(included in Galley).</li>
+                    <li>Distribution box W/120A breaker Rear 40”x 48” galley side-opening door with locks (Black)</li>
+                    <li>Star gazer front wind (9'x 49')</li>
+                    <li>2- 24”x 36” drivers side/passenger side Exterior</li>
+                    <li>Black Door with Key Lock &amp; Window w/Screen</li>
+                    <li>2-15”x 24” Frame-less Windows with Screens</li>
+                    <li>Carry-on trailer</li>
+                    <li>2000lb axle</li>
+                    <li>2” ball hitch</li>
+                    <li>Straight Tongue</li>
+                    <li>1450 lb. load capacity</li>
+                    <li>ST 205 / 75R 15″, Radial Tires</li>
+                    <li>Black trailer frame with one front jack</li>
+                    <li>Diamond plate Steel Fenders</li>
+                    <li>LED D.O.T. trailer lights</li>
+                    <li>2″ Receiver with 5 Pin Flat Connector</li>
+                </ul>
+            </div>
+            <div class="tf1">
+                <ul>
+                    <li>LED turn, brake and reverse lights</li>
+                    <li>LED Running Lights</li>
+                    <li>Deck 2”3/4” insulated Sealed with primer and Urethane Epoxy Resin. 1'1/2 insulation</li>
+                    <li>Internal Camper Frame : Wall studs 1”3/8 x '3/8 12 Layer Laminated sanded Plywood. 1'1/2 insulation</li>
+                    <li>3 speed Crank Vent on the Roof</li>
+                    <li>2 Switched Exterior LED Light Above the Door Outside Power Cord Attachment (Shore Power)
+                        1”1/2” Insulated Floor ,ceiling and walls. Laminated Natural wood grain Manufactured Flooring. Floor, 3/4 walls Carpet ¼ wall and ceiling.</li>
+                    <li>Cabin 2 LED personal touch reading lights (Sleep Area)</li>
+                    <li>Cabin 4 LED switched Interior Lights (Sleep Area)</li>
+                    <li>Galley includes: 2 LED lights on switch, 12v cigarette lighter on switch, dual USB with voltmeter on switch, 1-110 volt AC outlet.</li>
+                    <li>Front wall and Rap around shelving in cabin Custom Coat Urethane Exterior (Color choice)</li>
+                    <li>20” lifting jacks 1000lb load capacity ea. (used tolevel trailer when camping), Safety Chains & Jack Full Rear Galley with Storage and Shelves Bottom& middle galley shelf</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <script type="module" src="{% static 'js/index.js' %}"></script>
+    {% include 'footer.html' %}
+{% endblock content %} 

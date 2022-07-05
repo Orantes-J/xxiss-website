@@ -1,0 +1,35 @@
+<div class="c-form-wrapper">
+    <div class="c-form hide-object">
+        <div class="c-h">
+            <div class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+            <h3 class="tf1">Get In Contact</h3>
+            <div class="c-f">
+                <form class="sprt-form" autocomplete="off" action="/sub-form" method="POST">
+                    {% csrf_token  %}
+                    <div class="g-form">
+                        <div class="g-form-in">
+                            <input type="text" name="f-name" class="f-name" autocomplete="off" placeholder="name" required>
+                            <br>
+                            <input type="tel" name="f-phone" class="f-phone" autocomplete="off" placeholder="phone" required>
+                            <br>
+                            <input type="email" name="f-email" class="f-email" autocomplete="off" placeholder="email" required>
+                            <br>
+                            <label for="trailer-options" class="tf1">Choose a Trailer</label>
+                            <select name="trailer-options" id="trailer-options">
+                                <option value="roam" class="selectoptions" data-selected="false">Roam</option>
+                                <option value="sparta" class="selectoptions" data-selected="false">Sparta</option>
+                                <option value="coyote" class="selectoptions" data-selected="false">Coyote</option>
+                            </select>
+                            <input type="text" class="selected-item" name="selected-item">
+                        </div>
+                        <div class="g-form-txt">
+                            <textarea name="f-textarea" class="f-textarea" id="f-textarea" cols="30" rows="10" placeholder="enter message..."></textarea>
+                            <br>
+                            <button>Get Quote</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+    <!-- FONT AWESOME CDN  -->
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html'%}
+    {% if user|length == 0 %}
+    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-login-page">login </a></p>
+    {% else %}
+    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-logout">Logout </a> | <a class="direct-link" href="/return-to-dash"> Dashboard</a></li></a></p>
+    {% endif %}
+    {% include 'supportform.html' %}
+    <div class="grt-crsl">
+        <img src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" data-img="1" data-display="true" alt="test image" class="display-object crsl crsl-img1">
+        <img src="{% static 'images\xxiss-carousel-holder-2.jpg' %}" data-img="2" data-display="false" alt="test image" class="hide-object crsl crsl-img2">
+        <img src="{% static 'images\xxiss-carousel-holder-3.jpg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img3">
+        <img src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img4">
+    </div>
+    <div class="dots-imgs">
+        <ul>
+            <li class="img-1-dot"><i class="fa-solid fa-circle-notch"></i></li>
+            <li class="img-2-dot"><i class="fa-solid fa-circle-notch"></i></li>
+            <li class="img-3-dot"><i class="fa-solid fa-circle-notch"></i></li>
+            <li class="img-4-dot"><i class="fa-solid fa-circle-notch"></i></li>
+        </ul>
+    </div>
+    <!-- ALL DIVS WILL BE A GRID TEMPLATE FORMAT -->
+    <div class="sections-wrapper">
+    <hr>
+    <section class="xx-f-s">
+        <h2 class="tf1">Family Friendly</h2>
+        <div class='g-t-1'>
+            <div class="gt1t1">
+                <img class="tr-image-1" src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
+            </div>
+            <div class="trailer-svg-1">
+                <img src="{% static 'images\xxiss-trailer-svg-1.jpg' %}" alt="trailer-1">
+            </div>
+            <div class="gt1t2">
+                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
+            </div>
+            <button class="hyper-c-btn">
+                <p class="hyper-r"><a href="/specs" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
+            </button>
+        </div>
+    </section>
+    <hr>
+    <section class="xx-s-s">
+        <h2 class="tf1">Best Seller</h2>
+        <div class="g-t-2">
+            <div class="trailer-svg-2">
+                <img src="{% static 'images\xxiss-trailer-svg-2.jpg' %}" alt="trailer-2">
+            </div>
+            <div class="gt2t1">
+                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
+            </div>
+            <div class="gt2t2">
+                <img class="tr-image-2" src="{% static 'images\xxiss-carousel-holder-3.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
+            </div>
+            <button class="hyper-l-btn">
+                <p class="hyper-l"><a href="/specs" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
+            </button>
+        </div>
+    </section>
+    <hr>
+    <section class="xx-t-s">
+        <h2 class="tf1">Company Favorite</h2>
+        <div class="g-t-3">
+            <div class="gt3t1">
+                <img class="tr-image-3" src="{% static 'images\xxiss-carousel-holder-2.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
+            </div>
+            <div class="trailer-svg-3">
+                <img src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="tariler-3">
+            </div>
+            <div class="gt3t2">
+                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
+            </div>
+            <button class="hyper-r hyper-r-btn"><p class="hyper-r"><a href="/specs" class="tf1">See More  <i class="fa-solid fa-arrow-pointer pointer"></i></a></p></button>
+        </div>
+    </section>
+    </div>
+    <hr>
+    <!-- GRID TEMPLATE ENDS HERE  -->
+    {% include 'footer.html' %}
+    </script>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

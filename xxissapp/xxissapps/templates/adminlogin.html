@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Admin Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="admin-login-wrapper">
+        <h2 class="tf1">Admin Login</h2>
+        <div class="lock-icon-container">
+            <img class="lock-icon" src="{% static 'images/lock-icon-xxiss.png' %}" alt="lock image">
+        </div>
+        <div class="admin-form-container">
+            <form class="admin-form-lg tf1" action="/admin-sign-in" method="POST">
+                {% csrf_token %}
+                <input type="text" class="adminusername" id="adminusername" name="adminusername" placeholder="Admin Username"><br>
+                <input type="password" class="adminpassword" id="password" name="adminpassword" placeholder="Password"><br>
+                <div class="admin-login-btn">
+                    <button class="tf1" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

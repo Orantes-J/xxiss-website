@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>My Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- FONT AWESOME CDN  -->
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css\index.css' %}">
+</head>
+<body>
+    <div class="img-holder-container">
+        <a href="/"><img class="dash-xxiss-logo" src="{% static 'images/xxisslogo-img.jpeg' %}" alt="company logo"></a>
+    </div>
+    <div class="payment-box hide-object">
+        <div><i class="fa-solid fa-xmark close-payment-box"></i></div>
+        <div class="cc-card-div">
+            <img src="{% static 'images/xxiss-card-img.png' %}" alt="">
+        </div>
+        <form class="make-payment-container" action="/make-payment" method="POST">
+            <input type="text" class="card-holder" name="card-holder" id="card-holder" placeholder="Cardholder" required><br>
+            <input type="text" class="card-number" name="card-number" id="card-number" placeholder="Card Number" required>
+            <div class="mke-pymt">
+                <button class="mke-pymt-btn">Make Payment <i class="fa-regular fa-credit-card"></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="order-details-wrapper">
+        {% if logged_user %}
+            {% for i in logged_user %}
+                {% if forloop.counter == 2 %}
+                <span class="grt-wel tf1">Welcome Back {{i}} | <a class="cust-logout" href="/customer-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></span>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="order-detail-container">
+            <h2 class="mf1">Existing Payments</h2>
+            <div class="order-details">
+                <ul class="tf1">
+                    <li>Order : 155425 | Roam with add-ons - $250 | <button class="payment-btn"><a class="payment-btn-a" href="#"> Make A Payment </a><i class="fa-regular fa-credit-card"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="customer-support-wrapper">
+
+    </div>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

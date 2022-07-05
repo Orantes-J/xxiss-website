@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Build Trailer{% endblock title %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    {% include 'supportform.html' %}
+    <div class="construct-msg">
+        <h2 class="mf1">This Page is Under Construction - We Will soon be deploying this tab. Thank you for visiting our page - <a href="/">Let's go home</a></h2>
+    </div>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    {% include 'footer.html' %}
+{% endblock content %}

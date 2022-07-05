@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Receipt {% endblock title %}
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="order-wrapper">
+        <div class="order-payment-form">
+            <div>
+                <div class="space-holder">
+                    <div class="">
+                        <img class="img-cc" src="{% static 'images/xxiss-card-img.png' %}" alt="credit card image">
+                    </div>
+                </div>
+                <div class="payment-form-container">
+                    <form class="payment-form tf1" action="/pay-balance" method="POST">
+                        <label for="card-number">Card Number</label><br>
+                        <input type="text" name="card-number" class="card-number" id="card-number"><br>
+                        <label for="card-holder">Card Holder</label><br>
+                        <input type="text" name="card-holder" class="card-holder" id="card-holder">
+                        <div class="payment-btn-submit">
+                            <button class="payment-btn-receiptpg">Place Order <i class="fa-regular fa-credit-card"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="order-receipt">
+            <h2 class="mf1">My Order Receipt</h2>
+            <div class="receipt-wrapper">
+                <div class="order-details-container">
+                    <div>
+                        <img class="receipt-order-img" src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" alt="purchased item">
+                    </div>
+                    <div>
+                        <h3 class="mf1">Standard Items</h3>
+                        <ul class="tf1">
+                            <li>Lights</li>
+                            <li>Bumper</li>
+                            <li>Wifi</li>
+                            <li>Built in Heater</li>
+                            <li>Propane Tank</li>
+                        </ul>
+                        <hr>
+                        <h3 class="mf1">Add-Ons</h3>
+                        <ul class="tf1">
+                            <li>Extra Lights - $100</li>
+                            <li>Bumper 2 inch - $25</li>
+                            <li>Wifi extended - $30</li>
+                            <li>Heat lamp - $55</li>
+                            <li>Curtains - $65</li>
+                        </ul>
+                        <hr>
+                        <p class="tf1 t-t">Pay Today : $3,500</p>
+                        <hr>
+                        <p class="tf1 r-b">Remaining Balance : $3,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    {% include 'footer.html' %}
+{% endblock content %}
