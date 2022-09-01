@@ -1,3 +1,5 @@
-border color for firsat section maybe a darker blue
-
-select tag add event and get value and change txt content in label.
+ - Try to do at work
+1. create a table seperate for quick orders
+2. try to create customer form 
+ - At home 
+ 1. continue order and mysql intergration

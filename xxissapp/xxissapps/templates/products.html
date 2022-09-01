@@ -1,97 +1,164 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Specs{% endblock title %} 
+{% block title %}xxiss | trailer & products{% endblock title %} 
     {% block content %}
     {% include 'navbar.html' %}
-    <!-- {% if user %}
-    <p class="lg-lo-dash tf1"><a class="customer-cart" href="/order-receipt"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-quant"> 0</span></li></a></p>
-    {% endif %} -->
+    {% if user|length == 0 %}
+    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-login-page">Signup | login</a></p>
+    {% else %}
+    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-logout">Logout </a> | <a class="direct-link" href="/return-to-dash"> Dashboard</a></li></a></p>
+    {% endif %}
     {% include 'supportform.html' %}
+        <div class="wrapper">
+            <span class="dot"></span>
+            <div class="dots">
+                <span class="dotty"></span>
+                <span class="dotty"></span>
+                <span class="dotty"></span>
+            </div>
+        </div>
+        <div class="rtn-hm-wrapper-1">
+            <a class="rm-txt-dec hi-link" href="/"><i class="fa-solid fa-arrow-left rtn-btn"></i></a>
+        </div>
+        <div class="page-title">
+            <h1 class="mf1">All Products</h1>
+        </div>
+        <div class="i-sel mf1">
+            <span class="r-span">RV</span>
+            <span class="f-span">Floorplans</span>
+        </div>
+        <!-- images for view -->
+        <div class="r-i-w-t hide-object">
+            <img class="m-i-s m-i-s-1" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s m-i-s-2" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s m-i-s-3" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+        </div>
+        <!-- images for floorplans -->
+        <div class="f-i-w-t hide-object">
+            <img class="m-i-s flr-p1" data-floorplan1="floor plan 1" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s flr-p1" data-floorplan1="floor plan 2" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s flr-p1" data-floorplan1="floor plan 3" src="{% static 'images\xxiss-trailer-svg-2.jpg' %}" alt="image of ROAM trailer">
+        </div>
         <div class="t-m-1">
             <div>
-                <h2 class="mf1">ROAM</h2>
+                <h2 class="mf1">THE ROAMER</h2>
             </div>
             <div class="grid-template-alpro-t1">
                 <div class="t-img">
-                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of ROAM trailer">
+                    <img class="r-img" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
                 </div>
                 <div class="c-color-div">
                     <div>
                         <p class="tf1">Choose A Color </p>
                     </div>
                     <div class="bl-o-cl">
-                    <form action="/add-to-receipt" method="POST">
-                        {% csrf_token %}
                         <ul>
-                            <li class="color-1 c-color not-selected" data-color="green"></li>
-                            <li class="color-2 c-color not-selected" data-color="blue"></li>
-                            <li class="color-3 c-color not-selected" data-color="red"></li>
+                            <li class="color-1 c-color not-selected" data-selectedinp="1" title="white" data-color="White"></li>
+                            <li class="color-2 c-color not-selected" data-selectedinp="1" title="Charcoal Grey" data-color="Charcoal Grey"></li>
+                            <li class="color-3 c-color not-selected" data-selectedinp="1" title="Hunter Green" data-color="Hunter green"></li>
+                            <li class="color-4 c-color not-selected" data-selectedinp="1" title="Royal Blue" data-color="Royal Blue"></li>
                         </ul>
                     </div>
                     <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="roam"></i></p> -->
                     <div class="addons1 hide-object"></div>
+                    {% if user|length == 0 %}
                     <div  class="kaa-aubnd">
-                        <p class="tf1"><button type="submit" class="tf1 p-o-btn">place order!</button></p>
+                        <p class="tf1"><button type="submit" class="tf1 p-o-btn n-s-i"><a href="#" class="testScen">place order! </a></button></p>
                     </form>
                     </div>
+                    {% else %}
+                    <form action="/quick-order" method="POST">
+                        {% csrf_token %}
+                        <div class="hide-object">
+                            <input type="text" name="rvmodel" value="The Roamer" class="hidden-input rv-model-inp-1" id="model">
+                            <input type="text" name="rvcolor" value="null" class="hidden-input rv-color-inp-1" id="color">
+                            <input type="text" name="rvfloorplan" value="null" class="hidden-input rv-floorplan-inp-1" id="floorplan">
+                        </div>
+                        <div  class="kaa-aubnd">
+                            <div class="tf1">
+                                <button class="ord-n-btn">Order Now <i class="fa-solid fa-cart-shopping cart"></i></button><p> | </p><a class="chk-specs-btn" href="/specs/The-Roamer/1">Specs <i class="fa-solid fa-magnifying-glass"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
+        <div class="i-sel-2 mf1">
+            <span class="r-span-2">RV</span>
+            <span class="f-span-2">Floorplans</span>
+        </div>
+        <!-- images for rvs -->
+        <div class="r-i-w-t-2 hide-object">
+            <img class="m-i-s m-i-s-3" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s m-i-s-4" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s m-i-s-5" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+        </div>
+        <!-- images for floor plans -->
+        <div class="f-i-w-t-2 hide-object">
+            <img class="m-i-s flr-p2"  data-floorplan2 ="floor plan 1" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s flr-p2"  data-floorplan2 ="floor plan 2" src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="image of ROAM trailer">
+            <img class="m-i-s flr-p2"  data-floorplan2 ="floor plan 3" src="{% static 'images\xxiss-trailer-svg-2.jpg' %}" alt="image of ROAM trailer">
+        </div>
         <div class="t-m-2">
             <div>
-                <h2 class="mf1">COYOTE</h2>
+                <h2 class="mf1">THE GRIZZLY</h2>
             </div>
             <div class="grid-template-alpro-t2">
                 <div class="t-img">
-                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of Coyote trailer">
+                    <img src="{% static 'images\xxiss-trailer-svg-2.jpg' %}" alt="image of Coyote trailer">
                 </div>
                 <div class="c-color-div">
                     <div>
                         <p class="tf1">Choose A Color </p>
                     </div>
                     <div class="bl-o-cl">
+                    <form action="/quick-order" method="POST">
+                        {% csrf_token %}
                         <ul>
-                            <li class="color-1 c-color not-selected" data-color="green"></li>
-                            <li class="color-2 c-color not-selected" data-color="blue"></li>
-                            <li class="color-3 c-color not-selected" data-color="red"></li>
+                            <li class="color-1 c-color not-selected" data-selectedinp="2" title="white" data-color="white"></li>
+                            <li class="color-2 c-color not-selected" data-selectedinp="2" title="Charcoal Grey" data-color="charcoal grey"></li>
+                            <li class="color-3 c-color not-selected" data-selectedinp="2" title="Hunter Green" data-color="hunter green"></li>
+                            <li class="color-4 c-color not-selected" data-selectedinp="2" title="Royal Blue" data-color="royal blue"></li>
                         </ul>
                     </div>
                     <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="coyote"></i></p> -->
                     <div class="addons2 hide-object"></div>
+                    {% if user|length == 0 %}
                     <div  class="kaa-aubnd">
-                        <p class="tf1"><button class="tf1 p-o-btn">place order!</button></p>
+                        <p class="tf1"><button type="submit" class="tf1 p-o-btn n-s-i">place order!</button></p>
+                    </form>
                     </div>
+                    {% else %}
+                    <form action="/quick-order" method="POST">
+                        {% csrf_token %}
+                        <div  class="kaa-aubnd">
+                            <div class="in-q-o hide-object">
+                            <input type="hidden" value="The Grizzly" name="rvmodel">
+                            <input type="hidden" value="null" class="rv-floorplan-inp-2" name="rvfloorplan">
+                            <input type="hidden" value="null" class="rv-color-inp-2" name="rvcolor">
+                        </div>
+                        <div class="tf1">
+                            <button class="ord-n-btn">Order Now <i class="fa-solid fa-cart-shopping cart"></i></button><p> | </p><a class="chk-specs-btn" href="/specs/The-Grizzly/2">Specs <i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                    </form>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <div class="t-m-3">
-            <div>
-                <h2 class="mf1">SPARTA</h2>
-            </div>
-            <div class="grid-template-alpro-t3">
-                <div class="t-img">
-                    <img src="{% static 'images\image-holder-xxiss.png' %}" alt="image of Sparta trailer">
-                </div>
-                <div class="c-color-div">
-                    <div>
-                        <p class="tf1">Choose A Color </p>
-                    </div>
-                    <div class="bl-o-cl">
-                        <ul>
-                            <li class="color-1 c-color not-selected" data-color="green"></li>
-                            <li class="color-2 c-color not-selected" data-color="blue"></li>
-                            <li class="color-3 c-color not-selected" data-color="red"></li>
-                        </ul>
-                    </div>
-                    <!-- <p class="tf1 open-d-b">add-ons <i class="fa-solid fa-caret-down open-drop-down" data-rv="sparta"></i></p> -->
-                    <div class="addons3 hide-object"></div>
-                    <div class="kaa-aubnd">
-                        <p class="tf1"><button class="tf1 p-o-btn">place order!</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="e-s-2"></div>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(window).on("load", function(){
+                $('.wrapper').fadeOut("slow");
+            });
+        </script>
         <script type="module" src="{% static 'js/index.js' %}"></script>
     {% include 'footer.html' %}
 {% endblock content %} 

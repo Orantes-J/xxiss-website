@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Dashboard</title>
+    <title>xxiss admin dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- FONT AWESOME CDN  -->
     <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
@@ -14,59 +14,189 @@
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
 </head>
 <body>
+
+    <div class="create-new-order-wrapper hide-object">
+        <div class="close-div-x-wrapper">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div><h2>Create New Order</h2></div>
+        <div><i>-Make Sure customer has an account</i></div>
+        <div>
+            <form action="/create-order-admin" method="POST">
+                {% csrf_token %}
+                <input type="text" class="admin-input" name="admin-custom-em" placeholder="Customer Email"><br>
+                <input type="text" class="admin-input" name="admin-custom-name" placeholder="Item Name..."><br>
+                <input type="text" class="admin-input" name="admin-custom-color" placeholder="Color..."><br>
+                <input type="text" class="admin-input" name="admin-custom-plan" placeholder="Floor Plan..."><br>
+                <input type="text" class="admin-input" name="admin-custom-price" placeholder="Price..."><br>
+                <div>
+                    <button type="submit">Create Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="logo-wrapper">
         <img class="cmpny-logo" src="{% static 'images/xxisslogo-img.jpeg' %}" alt="company logo">
     </div>
     <div class="greet-admin-opt tf1">
         <p class="tf1">Welcome Back {{admin}}</p>
     </div>
+    <div class="crt-n-ord-wrapper">
+        <p class="tf1">Create New Order <i class="fa-solid fa-pen-to-square crt-ord"></i></p>
+    </div>
     <div class="chk-msg-container">
-        <p><a href="/check-messages">Check Messages <i class="fa-solid fa-message"></i></a></p>
+        <p><a class="mf1" href="/check-messages">Check Messages <i class="fa-solid fa-message"></i></a></p>
+        <span class="not-dot"></span>
+        <span class="msg-count mf1">{{messages|length}}</span>
     </div>
     <div class="log-out-container">
-        <p><a class="logout-hyper" href="/admin-logout">Logout</a></p>
+        <p><a class="logout-hyper mf1" href="/admin-logout">Logout</a></p>
     </div>
     <div class="db-search-bar tf1">
-        <form action="/search-request" method="GET">
-            <input type="text" class="search-in" name="search-in" placeholder="search...">
+        <form action="/get-order-num" method="POST">
+            {% csrf_token %}
+            <input type="text" class="search-in" name="search-in" placeholder="search order number...">
             <button class="search-icon-btn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
         </form>
     </div>
     <br>
+    <div>
+        <ul>
+            <li>New Orders</li>
+            {% for i in neworders %}
+            <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Process Orders</li>
+            {% for i in processingorders %}
+            <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Completed Orders</li>
+            {% for i in completedorders %}
+            <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <div class="search-result hide-object"></div>
     <h3 class="tf1 admin-dash-txt">Admin Dashboard</h3>
     <div class="orders-dash-wrapper">
         <div class="new-order-g-t">
-            <h2 class="mf1">New Orders</h2>
+            <h2 class="mf1 h2-m-3">New Orders</h2>
             <div class="nw-order-list">
                 <ul class="tf1 orders">
-                    <li>1. Object 1 | #1452878</li>
-                    <li>2. Object 2 | #1456846</li>
-                    <li>3. Object 3 | #1452674</li>
+                    {% for i in neworders %}
+                        {% for a in i %}
+                            {% if forloop.counter == 2 %} <p>Order : #{{a}} | {% endif %} </p>
+                        {% endfor %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
         <div class="current-order-g-t">
-            <h2 class="mf1">On going Orders</h2>
+            <h2 class="mf1 h2-m-3">On going Orders</h2>
             <div class="cu-order-list">
                 <ul class="tf1 orders">
-                    <li>1. object 4 | #142548</li>
-                    <li>2. object 5 | #142587</li>
-                    <li>3. object 6 | #142583</li>
+                    {% for i in processingorders %}
+                        {% for a in i %}
+                            {% if forloop.counter == 2 %} <p>Order : #{{a}}</p> {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
         <div class="completed-order-g-t">
-            <h2 class="mf1">Completed Orders</h2>
+            <h2 class="mf1 h2-m-3">Completed Orders</h2>
             <div class="cp-order-list">
                 <ul class="tf1 orders">
-                    <li>1. object 7 | #141524</li>
-                    <li>2. object 8 | #141525</li>
-                    <li>3. object 9 | #141526</li>
+                    {% for i in completedorders %}
+                        {% for a in i %}
+                            {% if forloop.counter == 2%} <p>Order : #{{a}}</p> {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
-    <script src='main.js'></script>
+    <!--PUBNUB MESSAGES -->
+    <div class="livechat-modal-container tf1 display-object">
+        <input class="i-l-c" id="message-body" type="text">
+        <button class="s-m-lc" onclick="buttonClick()">Send <i class="fa-solid fa-message"></i></button>
+        <div class="tf1 messages-c" id="messages"></div>
+    </div>
+
+    <!-- pubnub -->
+    <script>
+        const buttonClick = () => {
+            var input = document.getElementById('message-body');
+            publishMessage(input.value);
+            input.value = '';
+        };
+    
+        const showMessage = (msg) => {
+            var message = document.createElement('div');
+            message.innerText = msg;
+            document.getElementById('messages').appendChild(message);
+        };
+    
+        let pubnub;
+    
+        const setupPubNub = () => {
+            // Update this block with your publish/subscribe keys
+            pubnub = new PubNub({
+                publishKey : "pub-c-8c9972b3-e7d6-415a-bcea-74cd4a9138f2",
+                subscribeKey : "sub-c-419b2e44-874e-4dd2-8948-e2e57938993f",
+                uuid: "xxissuser"
+            });
+    
+            // add listener
+            const listener = {
+                status: (statusEvent) => {
+                    if (statusEvent.category === "PNConnectedCategory") {
+                        console.log("Connected");
+                    }
+                },
+                message: (messageEvent) => {
+                    showMessage(messageEvent.message.description);
+                },
+                presence: (presenceEvent) => {
+                    // handle presence
+                }
+            };
+            pubnub.addListener(listener);
+    
+            // subscribe to a channel
+            pubnub.subscribe({
+                channels: ["hello_world"]
+            });
+        };
+    
+        // run after page is loaded
+        window.onload = setupPubNub;
+    
+        // publish message
+        const publishMessage = async (message) => {
+            // With the right payload, you can publish a message, add a reaction to a message,
+            // send a push notification, or send a small payload called a signal.
+            const publishPayload = {
+                channel : "hello_world",
+                message: {
+                    title: "greeting",
+                    description: message
+                }
+            };
+            await pubnub.publish(publishPayload);
+        }
+        </script>
+    
+
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.js"></script>
 </body>
 </html>

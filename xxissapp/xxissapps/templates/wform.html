@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Specs{% endblock title %} 
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="register-warr-form-wrapper">
+        <div class="w-p-i w-p-p">
+            <input type="text" placeholder="The original owner" name="o-g-owner" id="o-g-owner"><br>
+            <p>Name*</p>
+            <input type="text" placeholder="First...">
+            <input type="text" placeholder="Last...">
+        </div>
+        <div class="w-p-a">
+            <p>Address*</p>
+            <input type="text" placeholder="Adresss 1"><br>
+            <input type="text" placeholder="Address 2">
+            <div class="d-s-2>
+                <input type="text" placeholder="City"><br>
+                <input type="text" placeholder="State / Provinve / Region">
+            </div>
+            <div>
+                <input type="number">
+                <input type="number">
+            </div>
+            <div>
+                <input type="text" placeholder="Owner email Name"><br>
+                <input type="text" placeholder="Dealer email Name">
+            </div>
+            <div>
+                <div>
+                    <h3>Purchase information</h3>
+                    <div>
+                        <p>Select A Model</p>
+                        <select name="trailer-options" id="trailer-options">
+                            <option value="Roam" class="selectoptions" data-selected="false">Roam</option>
+                            <option value="Sparta" class="selectoptions" data-selected="false">Sparta</option>
+                            <option value="Coyote" class="selectoptions" data-selected="false">Coyote</option>
+                        </select>
+                    </div>
+                    <p>VIN*</p>
+                    <textarea name="text-wf" id="text-wf" cols="30" rows="10">I am the decoy</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+{% endblock %}

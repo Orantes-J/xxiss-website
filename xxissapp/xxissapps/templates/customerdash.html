@@ -14,14 +14,27 @@
     <div class="img-holder-container">
         <a href="/"><img class="dash-xxiss-logo" src="{% static 'images/xxisslogo-img.jpeg' %}" alt="company logo"></a>
     </div>
+    {% if messages %}
+    <div class="success-msg-wrapper tf1">
+        {% for i in messages %}
+            <p>Success Message : {{i}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="payment-box hide-object">
         <div><i class="fa-solid fa-xmark close-payment-box"></i></div>
         <div class="cc-card-div">
             <img src="{% static 'images/xxiss-card-img.png' %}" alt="">
         </div>
-        <form class="make-payment-container" action="/make-payment" method="POST">
+        <div class="quick-pay-dash-wrapper">
+            <img class="quick-pay-dash" src="{% static 'images/xxiss-weaccept.jpg' %}" alt="">
+        </div>
+        <form class="make-payment-container" action="/dash-payment" method="POST">
+            {% csrf_token %}
             <input type="text" class="card-holder" name="card-holder" id="card-holder" placeholder="Cardholder" required><br>
-            <input type="text" class="card-number" name="card-number" id="card-number" placeholder="Card Number" required>
+            <input type="text" class="card-number" name="card-number" id="card-number" placeholder="Card Number" required><br>
+            <input type="text" class="card-exp" name="card-exp" id="card-exp" placeholder="Exp Date" required><br>
+            <input type="text" class="cvv" name="card-cvv" id="card-number" placeholder="cvv" required>
             <div class="mke-pymt">
                 <button class="mke-pymt-btn">Make Payment <i class="fa-regular fa-credit-card"></i></button>
             </div>
@@ -31,22 +44,121 @@
         {% if logged_user %}
             {% for i in logged_user %}
                 {% if forloop.counter == 2 %}
-                <span class="grt-wel tf1">Welcome Back {{i}} | <a class="cust-logout" href="/customer-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></span>
+                <span class="grt-wel tf1 stf-p">Welcome Back <span class="curruser">{{i}}</span> | <a href="#" class="h-l-t l-chat">Start A Live Chat <i class="fa-solid fa-comment"></i></a> |<a href="/all-products" class="cust-logout">Visit Products</a> | <a class="cust-logout" href="/customer-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></span>
                 {% endif %}
             {% endfor %}
         {% endif %}
         <div class="order-detail-container">
             <h2 class="mf1">Existing Payments</h2>
             <div class="order-details">
-                <ul class="tf1">
-                    <li>Order : 155425 | Roam with add-ons - $250 | <button class="payment-btn"><a class="payment-btn-a" href="#"> Make A Payment </a><i class="fa-regular fa-credit-card"></i></button></li>
+                <ul class="tf1  stf-p-2">
+                    <!-- <div style="background-color: rgb(62, 164, 62);">
+                        {% for a in cust_orders %}
+                            {% for i in a %} 
+                            <h3>Test :{{a}} </h3>
+                            {% endfor %}
+                        {% endfor %}
+                    </div> -->
+                    <div>
+                        {% for a in cust_orders %}
+                            {% for i in a %}
+                                {% if forloop.counter == 2 %}<li>Order : #{{i}} | {% endif %}{% if forloop.counter == 3 %} {{i}} | <button class="payment-btn"><a class="payment-btn-a" href="#"> Make A Payment </a><i class="fa-regular fa-credit-card"></i></button></li>{% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        <div class="e-s-3"></div>
+                        <i>If you have any questions or concerns alwasy feel free to recah out to us!</i>
+                    </div>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="customer-support-wrapper">
-
+    <div class="customer-support-wrapper"></div>
+    <!-- <div class="livechat-modal-container hide-object">
+        <div class="livechat-header-wrapper">
+            <h2>Live Chat <i class="fa-solid fa-comment"></i></h2>
+        </div>
+        <div class="livechat-msg-area-wrapper">
+            <p>Message 1</p>
+            <p>Message 2</p>
+        </div>
+        <div class="livechat-input-wrapper">
+            <input type="text" placeholder="Message..">
+        </div>
+    </div> -->
+    <!--PUBNUB MESSAGES -->
+    <div class="livechat-modal-container tf1 hide-object">
+        <input class="i-l-c" id="message-body" type="text">
+        <button class="s-m-lc" onclick="buttonClick()">Send <i class="fa-solid fa-message"></i></button>
+        <div class="tf1 messages-c" id="messages"></div>
     </div>
+
+    <!-- pubnub -->
+    <script>
+        const buttonClick = () => {
+            var input = document.getElementById('message-body');
+            publishMessage(input.value);
+            input.value = '';
+        };
+    
+        const showMessage = (msg) => {
+            var message = document.createElement('div');
+            message.innerText = msg;
+            document.getElementById('messages').appendChild(message);
+        };
+    
+        let pubnub;
+    
+        const setupPubNub = () => {
+            // Update this block with your publish/subscribe keys
+            var curruser = document.querySelector('.curruser')
+            pubnub = new PubNub({
+                publishKey : "pub-c-8c9972b3-e7d6-415a-bcea-74cd4a9138f2",
+                subscribeKey : "sub-c-419b2e44-874e-4dd2-8948-e2e57938993f",
+                uuid: curruser
+            });
+    
+            // add listener
+            const listener = {
+                status: (statusEvent) => {
+                    if (statusEvent.category === "PNConnectedCategory") {
+                        console.log("Connected");
+                    }
+                },
+                message: (messageEvent) => {
+                    showMessage(messageEvent.message.description);
+                },
+                presence: (presenceEvent) => {
+                    // handle presence
+                }
+            };
+            pubnub.addListener(listener);
+    
+            // subscribe to a channel
+            pubnub.subscribe({
+                channels: ["hello_world"]
+            });
+        };
+    
+        // run after page is loaded
+        window.onload = setupPubNub;
+    
+        // publish message
+        const publishMessage = async (message) => {
+            // With the right payload, you can publish a message, add a reaction to a message,
+            // send a push notification, or send a small payload called a signal.
+            const publishPayload = {
+                channel : "hello_world",
+                message: {
+                    title: "greeting",
+                    description: message
+                }
+            };
+            await pubnub.publish(publishPayload);
+        }
+        </script>
+    
+
     <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.js"></script>
 </body>
 </html>

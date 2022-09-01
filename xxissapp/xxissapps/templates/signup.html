@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}xxiss | Sign Up{% endblock title %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    {% include 'supportform.html' %}
+    <div class="customer-login-wrapper adjust-height-s">
+        <div class="login-container">
+            <h2 class="tf1">Sign Up</h2>
+            <div class="lock-icon-container">
+                <img class="lock-icon" src="{% static 'images/lock-icon-xxiss.png' %}" alt="lock image">
+            </div>
+            <div class="customer-signup-form-container">
+                <form class="customer-signup-form-lg tf1" action="/customer-dash-new" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="signupusername" id="fullname" name="fullname" required placeholder="Full Name">
+                    <input type="email" class="signemail" id="signemail" name="signemail" required placeholder="Email">
+                    <input type="text" placeholder="Phone Number" name="signphone" id="signphone">
+                    <input type="text" placeholder="Mailing Address" name="signaddy">
+                    <input type="password" class="signuppassword" id="signuppassword" name="signuppassword" required placeholder="Password">
+                    <textarea name="signthow" id="signhow" cols="30" rows="10" placeholder="How did you hear about us?"></textarea>
+                    <div class="signup-login-btn">
+                        
+                        <button class="tf1" type="submit">Sign-Up</button>
+                    </div>
+                    <div class="send-2-sup c-t">
+                        <a class="send-2-suptxt" href="/customer-login-page">Have An Account?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="e-s-2"></div>
+    {% include 'footer.html' %}
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( 'span' ).click(function() {
+            $( 'div' ).fadeIn( "slow" );
+        });
+    </script>
+{% endblock content %}

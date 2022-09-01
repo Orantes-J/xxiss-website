@@ -7,12 +7,13 @@
         <div class="nav-list-items-container">
             <ul class="tf1">
                 <li><a class="about" href="/about">About</a></li>
+                <li><a class="blog-lk" href="/xxiss-blogs">Blog</a></li>
                 <li><a class="all-pr" href="/all-products">Trailers</a></li>
-                </li>
+                {% if user|length > 0 %}
                 <li><a class="byo-trailer" href="/build-your-own-trailer">B-Y-O Trailer</a></li>
-                <li class="sprt">Support</li>
+                {% endif %}
+                <li class="sprt">Quote</li>
             </ul>
         </div>
-        <!-- <img src="{% static 'images\xxiss-trailer-svg-1.jpg' %}" alt="trailer 1"> -->
     </div>
 </nav>

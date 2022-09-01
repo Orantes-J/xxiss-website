@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Home Page</title>
+    <title>xxiss | home page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
     <!-- FONT AWESOME CDN  -->
@@ -15,18 +15,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="error-msg-wrapper">
+        {% for i in messages %}
+            <p>Error Message{{i}}</p>
+        {% endfor %}
+    </div>  
+    <div class="wrapper">
+        <span class="dot"></span>
+        <div class="dots">
+            <span class="dotty"></span>
+            <span class="dotty"></span>
+            <span class="dotty"></span>
+        </div>
+    </div>
+    <div class="loader-spn"></div>
     {% include 'navbar.html'%}
     {% if user|length == 0 %}
-    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-login-page">login </a></p>
+    <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-login-page">Signup | login</a></p>
     {% else %}
     <p class="lg-lo-dash tf1"><a class="direct-link" href="/customer-logout">Logout </a> | <a class="direct-link" href="/return-to-dash"> Dashboard</a></li></a></p>
     {% endif %}
     {% include 'supportform.html' %}
     <div class="grt-crsl">
-        <img src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" data-img="1" data-display="true" alt="test image" class="display-object crsl crsl-img1">
-        <img src="{% static 'images\xxiss-carousel-holder-2.jpg' %}" data-img="2" data-display="false" alt="test image" class="hide-object crsl crsl-img2">
-        <img src="{% static 'images\xxiss-carousel-holder-3.jpg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img3">
-        <img src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img4">
+        <img src="{% static 'images\trail-img14.jpeg' %}" data-img="1" data-display="true" alt="test image" class="display-object crsl crsl-img1">
+        <img src="{% static 'images\trail-img1.jpeg' %}" data-img="2" data-display="false" alt="test image" class="hide-object crsl crsl-img2">
+        <img src="{% static 'images\trail-img4.jpeg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img3">
+        <img src="{% static 'images\trail-img8.jpeg' %}" data-img="3" data-display="false" alt="test image" class="hide-object crsl crsl-img4">
+    </div>
+    <div class="trans-txt-wrapper display-object">
+        <img src="{% static 'images\text-trans.png' %}" alt="xxiss transparent text">
     </div>
     <div class="dots-imgs">
         <ul>
@@ -40,7 +57,7 @@
     <div class="sections-wrapper">
     <hr>
     <section class="xx-f-s">
-        <h2 class="tf1">Family Friendly</h2>
+        <h2 class="tf1">The Roamer</h2>
         <div class='g-t-1'>
             <div class="gt1t1">
                 <img class="tr-image-1" src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
@@ -49,52 +66,45 @@
                 <img src="{% static 'images\xxiss-trailer-svg-1.jpg' %}" alt="trailer-1">
             </div>
             <div class="gt1t2">
-                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
+                <p class="tf1 stf-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
             </div>
             <button class="hyper-c-btn">
-                <p class="hyper-r"><a href="/specs" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
+                <p class="hyper-r"><a href="/specs/roam/1" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
             </button>
         </div>
     </section>
     <hr>
     <section class="xx-s-s">
-        <h2 class="tf1">Best Seller</h2>
+        <h2 class="tf1">The Grizzly</h2>
         <div class="g-t-2">
             <div class="trailer-svg-2">
                 <img src="{% static 'images\xxiss-trailer-svg-2.jpg' %}" alt="trailer-2">
             </div>
             <div class="gt2t1">
-                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
+                <p class="tf1 testcase stf-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
             </div>
             <div class="gt2t2">
                 <img class="tr-image-2" src="{% static 'images\xxiss-carousel-holder-3.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
             </div>
             <button class="hyper-l-btn">
-                <p class="hyper-l"><a href="/specs" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
+                <p class="hyper-l"><a href="/specs/coyote/2" class="tf1">See More <i class="fa-solid fa-arrow-pointer pointer"></i></a></p>
             </button>
         </div>
     </section>
-    <hr>
-    <section class="xx-t-s">
-        <h2 class="tf1">Company Favorite</h2>
-        <div class="g-t-3">
-            <div class="gt3t1">
-                <img class="tr-image-3" src="{% static 'images\xxiss-carousel-holder-2.jpg' %}" data-img="2" data-display="false" alt="test image" width="300" height="300" class="display-object">
-            </div>
-            <div class="trailer-svg-3">
-                <img src="{% static 'images\xxiss-trailer-svg-3.jpg' %}" alt="tariler-3">
-            </div>
-            <div class="gt3t2">
-                <p class="tf1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum alias officiis impedit nihil quasi laboriosam sapiente sunt magnam vitae placeat!</p>
-            </div>
-            <button class="hyper-r hyper-r-btn"><p class="hyper-r"><a href="/specs" class="tf1">See More  <i class="fa-solid fa-arrow-pointer pointer"></i></a></p></button>
-        </div>
-    </section>
     </div>
-    <hr>
     <!-- GRID TEMPLATE ENDS HERE  -->
     {% include 'footer.html' %}
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
     </script>
     <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script>
+        $(window).on("load", function(){
+            $('body').hide().fadeIn('slow');
+            $('.wrapper').fadeOut("slow");
+        });
+    </script>
 </body>
 </html>

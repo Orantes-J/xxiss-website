@@ -13,27 +13,46 @@
                     </div>
                 </div>
                 <div class="payment-form-container">
+                    <div class="cnf-pur-txt">
+                        <h3 class="tf1">Confirm Purchase</h3>
+                        <span class="w-txt tf1">with</span>
+                        <span class="w-txt-1 tf1">Payment Form</span>
+                    </div>
+                    <div class="xxiss-trust">
+                        <img class="img-trust" src="{% static 'images/text-trans.png' %}" alt="In xxiss we trust image">
+                    </div>
                     <form class="payment-form tf1" action="/pay-balance" method="POST">
-                        <label for="card-number">Card Number</label><br>
-                        <input type="text" name="card-number" class="card-number" id="card-number"><br>
-                        <label for="card-holder">Card Holder</label><br>
-                        <input type="text" name="card-holder" class="card-holder" id="card-holder">
+                        {% csrf_token %}
+                        <input type="text" name="card-number" class="card-number" placeholder="Card Number" id="card-number"><br>
+                        <input type="text" name="card-holder" class="card-holder" placeholder="Card Owner" id="card-holder"><br>
+                        <input type="text" name="card-exp" class="card-exp" placeholder="Card Expiration" id="card-exp"><br>
+                        <input type="text" name="card-cvv" class="card-cvv" placeholder="Card CVV" id="card-cvv"><br>
+                        <div class="hide-object">
+                            <input type="text" value="{{onum}}" name="rvonum">
+                            <input type="text" value="{{rvmodel}}" name="rvmodel">
+                            <input type="text" value="{{rvfloorplan}}" name="rvfloorplan">
+                            <input type="text" value="{{rvcolor}}" name="rvcolor">
+                        </div>
                         <div class="payment-btn-submit">
                             <button class="payment-btn-receiptpg">Place Order <i class="fa-regular fa-credit-card"></i></button>
                         </div>
                     </form>
+                    <div class="tru-cards-wrapper">
+                        <img src="{% static 'images\xxiss-weaccept.jpg' %}" alt="Trusted cards that xxiss works with">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="order-receipt">
-            <h2 class="mf1">My Order Receipt</h2>
+            <h2 class="mf1 txt-und">My Order Receipt</h2>
             <div class="receipt-wrapper">
                 <div class="order-details-container">
                     <div>
                         <img class="receipt-order-img" src="{% static 'images\xxiss-carousel-holder-4.jpg' %}" alt="purchased item">
+                        <h2 class="pur-itt tf1">The Roamer</h2>
                     </div>
                     <div>
-                        <h3 class="mf1">Standard Items</h3>
+                        <h3 class="mf1">Standard Features</h3>
                         <ul class="tf1">
                             <li>Lights</li>
                             <li>Bumper</li>
@@ -42,13 +61,11 @@
                             <li>Propane Tank</li>
                         </ul>
                         <hr>
-                        <h3 class="mf1">Add-Ons</h3>
                         <ul class="tf1">
-                            <li>Extra Lights - $100</li>
-                            <li>Bumper 2 inch - $25</li>
-                            <li>Wifi extended - $30</li>
-                            <li>Heat lamp - $55</li>
-                            <li>Curtains - $65</li>
+                            <h3>Order Number : {{onum}}</h3>
+                            <li>Model : {{rvmodel}}</li>
+                            <li>Floor Plan : {{rvfloorplan}}</li>
+                            <li>Model Color : {{rvcolor}}</li>
                         </ul>
                         <hr>
                         <p class="tf1 t-t">Pay Today : $3,500</p>

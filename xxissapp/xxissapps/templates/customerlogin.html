@@ -7,9 +7,16 @@
     <title>Login Page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css\index.css'%}">
+    <!-- FONT AWESOME CDN  -->
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="/"> <img class="cpny-logo" src="{% static 'images\xxisslogo-img.jpeg' %}" alt="company logo"></a>
+    {% include 'navbar.html' %}
+    <div class="e-s-2"></div>
     {% for msg in messages %}
     <div class="customer-msg-error">
         <p class="tf1 err-msg">{{msg}}</p>
@@ -29,28 +36,16 @@
                     <div class="customer-login-btn">
                         <button class="tf1" type="submit">Login</button>
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="sign-up-container">
-            <h2 class="tf1">Sign Up</h2>
-            <div class="lock-icon-container">
-                <img class="lock-icon" src="{% static 'images/lock-icon-xxiss.png' %}" alt="lock image">
-            </div>
-            <div class="customer-signup-form-container">
-                <form class="customer-signup-form-lg tf1" action="/customer-dash-new" method="POST">
-                    {% csrf_token %}
-                    <input type="text" class="signupusername" id="signupusername" name="signupusername" required placeholder="Username">
-                    <input type="email" class="signemail" id="signemail" name="signemail" required placeholder="Email">
-                    <input type="password" class="signuppassword" id="signuppassword" name="signuppassword" required placeholder="Password">
-                    <div class="signup-login-btn">
-                        <button class="tf1" type="submit">Sign-Up</button>
+                    <div class="send-2-sup">
+                        <a class="send-2-suptxt" href="/signup">Sign Up Here</a>
                     </div>
                 </form>
             </div>
         </div>
+        </div>
     </div>
-    <script type="module" src="{% static 'js/index.js' %}"></script>
     {% include 'footer.html' %}
+    <div class="e-s-1"></div>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

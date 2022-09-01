@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>xxiss under construction</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+    <!-- FONT AWESOME CDN  -->
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <div class="u-img-container">
+        <img class="u-img" src="{% static 'images/undercon-img.jpg' %}" alt="Website Is UNDER-CONSTRUCTION">
+    </div> -->
+    <div class="u-con-div">
+        <h2 class="mf1">This Website Is Under Construction</h2>
+    </div>
+    <div class="under-email-contact">
+        <form action="/u-contact" method="POST">
+            {% csrf_token %}
+            <input type="text" name="u-email" class="u-email" id="u-email" placeholder="enter email..." required>
+            <button class="u-btn-sub" type="submit">send</button>
+            <div class="msgBoxUC hide-object"></div>
+        </form>
+    </div>
+    <div class="e-s-1"></div>
+    {% include 'footer.html' %}
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

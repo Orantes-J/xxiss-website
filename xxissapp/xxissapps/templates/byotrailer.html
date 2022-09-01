@@ -1,13 +1,559 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Build Trailer{% endblock title %}
+{% block title %}xxiss | build your own trailer{% endblock title %}
 
 {% block content %}
     {% include 'navbar.html' %}
     {% include 'supportform.html' %}
-    <div class="construct-msg">
-        <h2 class="mf1">This Page is Under Construction - We Will soon be deploying this tab. Thank you for visiting our page - <a href="/">Let's go home</a></h2>
+    <div class="e-s-3"></div>
+    <form action="/build-your-trailer" method="POST">
+    {% csrf_token %}
+    <div class="display-object">
+        <h2 class="mf1 byo-title">Let's Get Start Building Your Custom Trailer!</h2>
     </div>
-    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <div class="q-1-wrapper tf1 display-object">
+        <h2 class="q-1-h">Select Your Trailer Model</h2>
+        <span><i>-delievery available</i></span>
+        <div class="q-1">
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt"> 
+                    <p class="slide-1-opt" data-span="1" data-selected="false">The Roamer</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-1-opt" data-span="1" data-selected="false">The Grizzly</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-1-opt" data-span="1" data-selected="false">Anaconda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-2-1 hide-object">
+        <div class="i-p tf1">
+            <p>Our base package features many highky sought-after features, and will allow you to get into the wonderful world of xxiss adventure trailering at an affordable price, while you go down with additional features you may not want or need.We have taken our time to refine our features to meet all your wants and needs.</p>
+        </div>
+    </div>
+    <div class="q-2-2 hide-object tf1">
+        <h1 class="q-3-h">Select Your Suspension</h1>
+        <div class="q-1">
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-2-opt" data-span="2" data-selected="false">Standard</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-2-opt" data-span="2" data-selected="false">All Road</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-2-opt" data-span="2" data-selected="false">Off Road</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-4-1 hide-object tf1">
+        <div>
+            <h1 class="q-3-h">Select Trailer Color</h1>
+            <p class="i-p">We offer have a total 4 different color options for you. Trailer; we special order the finest grade of powder-coated aluminum sheeting available, which is a durable baked-on finish; which boost the sheen, increases the color's life , and resist fading from harsh sunlight.</p>
+        </div>
+        <div class="q-4-wrapper">
+            <div>
+                <h2 class="q-h-4">Select Your Kestrel's Color*</h2>
+                <p>While the colors below are nearly perfect match, please note that the appearance may vary slightly from display-to-display. More colors are available on special order from our aluminum supplier. Contact us ofor more details.</p>
+            </div>
+            <div class="q-4">
+                <div>
+                    <div class="sbauys">
+                        <img class="st-2-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                    </div>
+                    <div class="q-1-b-s opt">
+                        <p class="slide-3-opt" data-span="3" data-selected="false">White</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sbauys">
+                        <img class="st-2-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                    </div>
+                    <div class="q-1-b-s opt">
+                        <p class="slide-3-opt" data-span="3" data-selected="false">Charcoal Grey</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sbauys">
+                        <img class="st-2-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                    </div>
+                    <div class="q-1-b-s opt">
+                        <p class="slide-3-opt" data-span="3" data-selected="false">Hunter Green</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sbauys">
+                        <img class="st-2-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                    </div>
+                    <div class="q-1-b-s opt">
+                        <p class="slide-3-opt" data-span="3" data-selected="false">Tory/Royal Blue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-5 hide-object tf1">
+        <div>
+            <h2>Electronic Trailer Brakes(optional)</h2>
+        </div>
+        <div class="q-5-wrapper">
+            <div>
+                <h3 class="q-1-h">Would you like to add electronic trailer brakes?</h3>
+            </div>
+            <div>
+                <p class="e-p">Vehichles may have a higher towing capacity if the trailer is equipped with brakes. They are optional, but they help by giving you control of the trailer when stopping, slowing down.These electronic brakes help reduce the strain on the tow vechilche braking system when towing a trailer. The tow vehichle will need a trainer brake controller installed by your mechanic in order to utilize the brakes.</p>
+            </div>
+            <div class="q-1-b-s opt">
+                <p class="slide-4-opt" data-span="4" data-selected="false">Trailer Brakes</p>
+            </div>
+        </div>
+    </div>
+    <div class="q-6 hide-object tf1">
+        <h1 class="q-3-h">Select Your Skylight Tint</h1>
+        <div>
+            <h3 class="q-1-h">Kestrel Skylight*</h3>
+        </div>
+        <div>
+            <p class="e-p">We've made the skylight on the Kestrel optional, please make a selection below.</p>
+        </div>
+        <div class="q-1">
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-4-opt" data-span="5" data-selected="false">No skylight</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-4-opt" data-span="5" data-selected="false">Clear Skylight</p>
+                </div>
+            </div>
+            <div>
+                <div class="sbauys">
+                    <img class="st-1-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-1-b-s opt">
+                    <p class="slide-4-opt" data-span="5" data-selected="false">Tinted Skylight</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-7 tf1 hide-object">
+        <div class="q-7-wrapper">
+            <h1 class="q-3-h">Cabin Options</h1>
+        <div>
+            <h3 class="q-1-h">Select Your Mattress*</h3>
+        </div>
+        <div>
+            <p class="e-p">Your trailer comes standard with a 6-inch thick single density foam matress, with the option of upgrading to an 8-inch triple densityy foam matress.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kajshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-b-s opt">
+                    <p class="slide-6-opt" data-span="6" data-selected="false">Standard Mattress</p>
+                </div>
+            </div>
+            <div>
+                <div class="kjasdabs">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-b-s-2 opt">
+                    <p class="slide-6-opt" data-span="6" data-selected="false">Upgrade Mattress</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p class="c-t">THIS QUESTION IS REQUIRED</p>
+        </div>
+        <div>
+            <h3 class="q-1-h">Interior Window Curtains(Pair)</h3>
+        </div>
+        <div>
+            <p class="e-p">Custom-fit curtains with sliding tracks on booth doors and windows inside the cabin.</p>
+        </div>
+        <div>
+            <div class="abisugda">
+                <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+            </div>
+            <div class="q-8-b-s-a opt">
+                <p class="slide-6-opt" data-span="6" data-selected="false">Window Curtains</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="q-8-b hide-object tf1">
+        <div class="q-7-wrapper">
+            <h1 class="q-3-h">Comfort Control</h1>
+        <div>
+            <h3 class="q-1-h">Fan Options*</h3>
+        </div>
+        <div>
+            <p class="e-p">Upgrade to a motorized, 4-speed, or 10-speed, thermostatically controlled fan with a rain sensor.Never wake up to rain coming into your cabin again. The Maxxair upgrade fan comes equipped with a 10-speed fan motor, motorized cover thermostat, and rain sensor</p>
+            <i>*Requires power upgrade.</i>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kajshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-b-s-bb opt">
+                    <p  class="slide-7-opt" data-span="7" data-selected="false">Roof Vent</p>
+                </div>
+            </div>
+            <div>
+                <div class="kjasdabs">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-bb-s-2 opt">
+                    <p class="slide-7-opt" data-span="7" data-selected="false">4-Speed Fan Upgarde</p>
+                </div>
+            </div>
+            <div>
+                <div class="kjasdabs">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-b-s-3-a opt">
+                    <p class="slide-7-opt" data-span="7" data-selected="false">10-Speed Fan Upgarde</p>
+                </div>
+            </div>
+        </div>
+        <div class="e-s-1"></div>
+        <div>
+            <h3 class="q-1-h">Propex Heater</h3>
+        </div>
+        <div>
+            <p class="e-p">We install the HS2211 heater below the floor of the trailer and duct it into the cabin.Thermostatically controlled from inside, all carbon monoxide is vented away from the sleeping area for peace of mind.</p>
+            <i>*Requires power upgrade on Kestrel.</i>
+        </div>
+        <div>
+            <div class="abisugda">
+                <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+            </div>
+            <div class="q-8-b-s-a opt">
+                <p class="slide-7-opt" data-span="7" data-selected="false">Propex Heater</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="q-9-wrapper hide-object tf1">
+        <h3 class="q-1-h">Propane Tank & Bracket Exterior*</h3>
+        <div>
+            <p class="e-p">5lb propane tank mounted to the driver's side of the trailer.Bracket is either silver or black depending on your trim selection on page 5.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kajshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-8-b-s-4 opt">
+                    <p class="slide-8-opt" data-span="8" data-selected="false">Propane Tank & Bracket</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-10-wrapper hide-object c-t tf1">
+        <div class="s-10-h">
+            <h2>Roof Rack</h2>
+            <i>*Requires For Awnings</i>
+        </div>
+        <div class="s-10-p">
+            <p>A roof rack of our own design. We have designed the roof rack just for our trailers, matching or complimenting the curvature of our roofline , the roofline, the roof rack's top surface is exactly parallel to the trailer frame, so when you've taken the time to level your trailer in camp, you'll know that the roof rack is level as well.This is very useful for your awnings, ,rooftop tents, or other similar roof-mounted accessories.</p>
+            <p>The standard 3-bar roof rack will allow you to mount tp any common roof-mounted accessories, such as awnings, road shower, roof top tents, bike and / or kayak carriers, etc. This option is the least obtrusive to the view through the skylight.</p>
+            <p>The Full Platform option is terrific for if you would like the ability to quickly and easily strap bundles of firewood, small containers, etc, without needing a roof basket.The Full Platform does not increase load capacity.</p>
+        </div>
+        <div class="s-10-ai">
+            <i class="i-h">Load ratings:</i><br>
+            <i>Static Weight(in camp) : 700 pounds</i><br>
+            <i>Dynamic Weight(moving) : 200 pounds</i>
+        </div>
+    </div>
+    <div class="q-11-wrapper hide-object tf1">
+        <h3 class="q-1-h">Would You Like A Roof Rack?</h3>
+        <div>
+            <p class="e-p">We've got a few different options available for you Pika or Kestrel. If you need moore storage, or you are looking at adding a rooftop tent for your kids our roof racks make the perfection addition.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-10-b-s-4 opt">
+                    <p class="slide-10-opt" data-selected="false">Custom Roof Rack W/3 Cross Bars</p>
+                </div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" data-span="10" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-10-b-s-4 opt">
+                    <p class="slide-10-opt" data-span="10" data-selected="false">Custom Roof Rack Full Platform</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-12-wrapper hide-object tf1">
+        <h3 class="q-1-h">Would You Like An Awning?</h3>
+        <div>
+            <p class="e-p">Mounted to the roof rack, these awnings provide excellent shade and protection from rain.</p>
+        </div>
+        <div class="q-11">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-11-b-s-4-1-1 opt">
+                    <p class="slide-11-opt" data-selected="false">Rhino 2000</p>
+                </div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-11-b-s-4-1-2 opt">
+                    <p class="slide-11-opt" data-span="11" data-selected="false">23-Zero Peregrine 180 Awning</p>
+                </div>
+                <div class="q-11-b-s-4-1-3 opt">
+                    <p class="slide-11-opt" data-span="11" data-selected="false">None</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-13-wrapper hide-object tf1">
+        <h3 class="q-1-h">Choose Your Battery*</h3>
+        <div>
+            <p class="e-p">We now offer the choice of an AGM deep-cycle lead acid battery (standard) or a Lion Energy Lithium Ion battery. The Lithium offers as much as 60% more useable power, 65% less weight, a lifetime warranty, and longer lasting charges.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-12-opt" data-span="12" data-selected="false">Standard AGM Battery</p>
+                </div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-12-opt" data-span="12" data-selected="false">Battleborn Self-Heating Lithium Battery</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-13-2-wrapper hide-object tf1">
+        <h3 class="q-1-h">Solar Panel Options</h3>
+        <i>includes wiring</i>
+        <div>
+            <p class="e-p">Robust and compact, these panels weigh virtually nothing, and nothing and pack a punch. Seamless intergration with the charging system of our trailer.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-12-1-opt" data-span="12" data-selected="false">Overland solar 120w Solar Panel (includes install)</p>
+                </div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-12-1-opt" data-span="12" data-selected="false">lightleaf Dropleaf Solar Panel (includes install)</p>
+                </div>
+            </div>
+        </div>
+        <div class="c-t">
+            <i>*Standard on Classic and Pika, included with Kestrel when equipped with power package.</i>
+        </div>
+    </div>
+    <div class="q-14-wrapper hide-object tf1">
+        <div>
+            <h2>Utility & Storage</h2>
+        </div>
+        <h3 class="q-1-h">Rear Trailer Jacks (pairs)</h3>
+        <div>
+            <p class="e-p">Useful for stabilizing and leaving in camp, or even lifting the trailer in the event of a flt tire 3,000lb support capacity 2,000lb lift capacity each.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-13-opt" data-span="13" data-selected="false">Standard / All-Road Utilty Jacks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-14-2-wrapper hide-object tf1">
+        <h3 class="q-1-h">Custom High Security Tongue Lock</h3>
+        <div>
+            <p class="e-p">An ultra-higgh security tongue lok of our own design. We have designed and developed this lock to allow you to secure your own trailer in camp or at home, making it virtually impossible for anyone to hitch up to your trailer without your permission.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt" data-selected="false">
+                    <p class="slide-13-1-opt" data-selected="false">Tongue Lock</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="q-15-wrapper hide-object tf1">
+        <h3 class="q-1-h">Tongue Storage</h3>
+        <div>
+            <p class="e-p">Add 7.5 cubbic feet of lockable and weather-resistent storage to the front of your trailer with our custom-made diamond plate aluminum tongue storage box.</p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-14-opt" data-span="14" data-selected="false">Locking Tongue Storage(Bare Aluminum)</p>
+                </div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-14-opt" data-span="14" data-selected="false">Locking Tongue Storage Box (Black)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="q-15-2-wrapper hide-object tf1">
+        <div><h2 class="c-t">Utility & Storage</h2></div>
+        <h3 class="q-1-h">Rear Mount Receiver Hitch</h3>
+        <div>
+            <p class="e-p">2" Receiver Hitch | 150-pound max | <i>Not For Towing</i></p>
+        </div>
+        <div class="q-8">
+            <div>
+                <div class="kasdfsshd">
+                    <img class="st-8-byo-img" src="{% static 'images\xxiss-carousel-holder-1.jpg' %}" alt="test must change this">
+                </div>
+                <div class="q-13-b-s-4 opt">
+                    <p class="slide-14-1-opt" data-span="14" data-selected="false">Rear Receiver Hitch</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="hide-object" type="submit">Submit</button>
+    </form>
+    <div class="e-s-3"></div>
+    <div class="byo-final-results hide-object mf1">
+        <div><h2>My Custom Order</h2></div>
+        <div>
+            <p>Custom Order Includes the following as selected :</p>
+        </div>
+        <div class="ul-wrapper">
+            <div>
+                <ul class="sel-items-ul">
+                    <li class="p-1-s">Page 1 : <span class="n-1-span"></span>  </li>
+                    <li class="p-2-s">Page 2 : <span class="n-2-span"></span> </li>
+                    <li class="p-3-s">Page 3 :  <span class="n-3-span"></span> </li>
+                    <li class="p-4-s">Page 4 : <span class="n-4-span"></span> </li>
+                    <li class="p-5-s">Page 5 : <span class="n-5-span"></span>  </li>
+                    <li class="p-6-s">Page 6 : <span class="n-6-span"></span> </li>
+                    <li class="p-7-s">Page 7 :  <span class="n-7-span"></span> </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="sel-items-ul">
+                    <li class="p-8-s">Page 8 : <span class="n-8-span"></span> </li>
+                    <li class="p-9-s">Page 9 : <span class="n-9-span"></span>  </li>
+                    <li class="p-10-s">Page 10 : <span class="n-10-span"></span> </li>
+                    <li class="p-11-s">Page 11 : <span class="n-11-span"></span>  </li>
+                    <li class="p-12-s">Page 12 : <span class="n-12-span"></span> </li>
+                    <li class="p-13-s">Page 13 : <span class="n-13-span"></span>  </li>
+                    <li class="p-14-s">Page 14 : <span class="n-14-span"></span> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="f-w-byo mf1">
+            <form action="/build-your-trailer" method="POST">
+                {% csrf_token %}
+                <input type="text" name="p-1" value="Heyyy" placeholder="heyyy" class="n-1 hide-object" id="p-1">
+                <input type="text" name="p-2" class="n-2 hide-object" id="p-2">
+                <input type="text" name="p-3" class="n-3 hide-object" id="p-3">
+                <input type="text" name="p-4" class="n-4 hide-object" id="p-4">
+                <input type="text" name="p-5" class="n-5 hide-object" id="p-5">
+                <input type="text" name="p-6" class="n-6 hide-object" id="p-6">
+                <input type="text" name="p-7" class="n-7 hide-object" id="p-7">
+                <input type="text" name="p-8" class="n-8 hide-object" id="p-8">
+                <input type="text" name="p-9" class="n-9 hide-object" id="p-9">
+                <input type="text" name="p-10" class="n-10 hide-object" id="p-10">
+                <input type="text" name="p-11" class="n-11 hide-object" id="p-11">
+                <input type="text" name="p-12" class="n-12 hide-object" id="p-12">
+                <input type="text" name="p-13" class="n-13 hide-object" id="p-13">
+                <input type="text" name="p-14" class="n-14 hide-object" id="p-14">
+                <button class="byo-btn" type="submit">Place Order <i class="fa-solid fa-cart-shopping cart"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="e-s-2"></div>
+    <div class="g-q-byo mf1">
+        <div class="nn"><i class="fa-solid fa-arrow-left prev-arr"></i></div>
+        <div class="s-n s-n-b-a w-1">1</div>
+        <div class="s-n w-2">2</div>
+        <div class="s-n w-3">3</div>
+        <div class="s-n w-4">4</div>
+        <div class="s-n w-5">5</div>
+        <div class="s-n w-6">6</div>
+        <div class="s-n w-7">7</div>
+        <div class="s-n w-8">8</div>
+        <div class="s-n w-9">9</div>
+        <div class="s-n w-10">10</div>
+        <div class="s-n w-11">11</div>
+        <div class="s-n w-12">12</div>
+        <div class="s-n w-13">13</div>
+        <div class="s-n w-14">14</div>
+        <div class="s-n w-15">15</div>
+        <div class="nn"><i class="fa-solid fa-arrow-left next-arr"></i></div>
+    </div>
     {% include 'footer.html' %}
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( 'span' ).click(function() {
+            $( 'div' ).fadeIn( "slow" );
+        });
+    </script>
 {% endblock content %}

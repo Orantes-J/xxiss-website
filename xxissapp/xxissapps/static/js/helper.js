@@ -151,3 +151,66 @@ export const generateAddOns3 = function(e){
     </div>
 `
 };
+
+export const highLightSel = function(){
+    const allOpts = document.querySelectorAll('.opt');
+    [...allOpts].forEach((opt) => {
+        opt.addEventListener('click', function(e){
+            const item = e.target;
+            const itemSpanSet = e.target.dataset.span;
+            console.log(`Here is span data set -> ${itemSpanSet}`)
+            document.querySelector(`.w-${itemSpanSet}`).classList.add('sect-ans');
+            e.target.dataset.selected = 'true';
+            item.classList.add('clickedOpt');
+            item.dataset.selected = 'true';
+        });
+    });
+};
+
+// ADDING BORDERS TO SELECTED FLOOR PLAN
+const floorPlans1 = document.querySelectorAll('.flr-p1');
+
+floorPlans1.forEach((fl) => {
+    fl.addEventListener('click', function(e){
+        // REMOVES CLASS OF SELECTION
+        floorPlans1.forEach((p) =>{
+            if(p.classList.contains('sl-border')){
+                p.classList.remove('sl-border');
+            };
+        });
+
+        // ADDS A THE CLASSLIST TO EMP THE SELECTION
+        const clickedItem = e.target;
+        clickedItem.classList.add('sl-border');
+        
+        // RECIEVE GRABBED ITEM CHNAGE DATASET AND ADJUST VALUE FOR INPUT
+
+        //ASSIGNING OR CHANGING THE VALUE OF THE INPUT -- NOTE SETATTRIBUTE FUNCTION SETS NEW VALUE FOR HTML VS CHNAGING VALUE VIA .VALUE IS JUST A TEMP CHNAGE FOR THE DOM DOES NOT CHANGE IN HTML
+        const rvflrInput = document.querySelector('.rv-floorplan-inp-1');
+        rvflrInput.setAttribute('value', clickedItem.dataset.floorplan1);
+    });
+});
+
+const floorPlans2 = document.querySelectorAll('.flr-p2');
+
+floorPlans2.forEach((fl) => {
+    fl.addEventListener('click', function(e){
+        // REMOVES CLASS OF SELECTION
+        floorPlans2.forEach((p) =>{
+            if(p.classList.contains('sl-border')){
+                p.classList.remove('sl-border');
+            };
+        });
+
+        // ADDS A THE CLASSLIST TO EMP THE SELECTION
+        const clickedItem = e.target;
+        clickedItem.classList.add('sl-border');
+
+        //ASSIGNING OR CHANGING THE VALUE OF THE INPUT 
+
+        const rvflrInput = document.querySelector('.rv-floorplan-inp-2');
+        rvflrInput.setAttribute('value', clickedItem.dataset.floorplan2);
+    });
+});
+
+// QUICK ORDERS - CHANGE FORM INPUT VALUES

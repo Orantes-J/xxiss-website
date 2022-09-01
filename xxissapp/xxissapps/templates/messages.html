@@ -4,35 +4,61 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Messages</title>
+    <title>xxiss admin |  messages</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/index.css' %}">
+    <script src="https://kit.fontawesome.com/b0c8841860.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="newmsg-g-t">
+        <a class="a-b-d" href="/admin-dash"><i class="fa-solid fa-left-long"></i> Admin Dashboard</a>
         <h2 class="mf1">Customer Messages</h2>
-        <a href="/admin-dash">Admin Dashboard</a>
-        <div class="cust-msgs">
-            <ul class="tf1 orders">
-                {% for i in messages %}
-                    <div>
-                        {% for a in i %}
-                        {% if forloop.counter == 2 %}
-                            <li>From : {{a}}</li>
-                        {% endif %}
-                        {% if forloop.counter == 3 %}
-                            <li>Phone : {{a}}</li>
-                        {% endif %}
-                        {% if forloop.counter == 4 %}
-                            <li>Email : {{a}}</li>
-                        {% endif %}
-                        {% if forloop.counter == 5 %}
-                            <li>Customer Message : {{a}}</li>
-                        {% endif %}
+        {% if messages|length <= 0 %}
+            <h2 class="tf1 c-t">All Caught Up!</h2>
+        {% else %}
+        <h2 class="mf1 c-t">You have {{messages|length}} new messages</h2>
+        {% endif %}
+        <div class="c-m-g-t-mm">
+            {% for i in messages %}
+            <div class="cust-msgs">
+                <div class="t-c-container">
+                    {% for b in i%}
+                    {% if forloop.counter == 1 %}
+                    <form action="admin-del-msg/{{b}}">
+                        {% csrf_token %}
+                        <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                    {% endif %}
                     {% endfor %}
-                    </div>
-                {% endfor %}
-            </ul>
+                    </form>
+                </div>
+                <ul class="tf1 orders">
+                {% for a in i %}
+                    {% if forloop.counter == 1 %}
+                        <li><span class="mi-sp">Message Id</span><br><span class="a-span">{{a}}</span></li>
+                    {% endif %}
+                    {% if forloop.counter == 2 %}
+                        <li><span class="f-sp">From</span><br><span class="a-span">{{a}}</span></li>
+                    {% endif %}
+                    {% if forloop.counter == 3 %}
+                        <li><span class="p-sp">Phone</span><br><span class="a-span">{{a}}</span></li>
+                    {% endif %}
+                    {% if forloop.counter == 4 %}
+                        <li><span class="e-sp">Email</span><br><span class="a-span">{{a}}</span></li>
+                    {% endif %}
+                    {% if forloop.counter == 5 %}
+                        <li><span class="m-sp">Customer Message</span><br><span class="a-span">{{a}}</span></li>
+                    {% endif %}
+                    {% if forloop.counter == 6 %}
+                        {% if a == False %}
+                            <li>None Selected</li>
+                        {% else %}
+                            <li><span class="r-sp">RV Requesting</span><br><span class="a-span">{{a}}</span></li>
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </body>
